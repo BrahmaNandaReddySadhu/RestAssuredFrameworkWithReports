@@ -1,4 +1,4 @@
-package utils;
+package restUtils;
 
 import java.util.Map;
 import io.restassured.RestAssured;
