@@ -27,11 +27,13 @@ public class AirlineTests {
 //                "    \"additionalneeds\": \"Breakfast\"\n" +
 //                "}";
 
-        Map<String,String> bookingDates= new HashMap<>();
-        bookingDates.put("checkin","2018-01-01");
-        bookingDates.put("checkout","2019-01-01");
+//        Map<String,String> bookingDates= new HashMap<>();
+//        bookingDates.put("checkin","2018-01-01");
+//        bookingDates.put("checkout","2019-01-01");
+//
+  //      String payload=Payloads.getCreateAirlinePayload("Jim","Brown",111,true,bookingDates,"Breakfast");
 
-        String payload=Payloads.getCreateAirlinePayload("Jim","Brown",111,true,bookingDates,"Breakfast");
+        Map<String,Object>  payload=Payloads.getCreateAirlinePayloadAsMap("Jim","Brown",111,true,"2018-01-01","2019-01-01","Breakfast");
 
         Response response =RestUtils.performPost(baseUri,payload,new HashMap<>());
         Assert.assertEquals(response.statusCode(),200);

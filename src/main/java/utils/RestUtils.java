@@ -7,7 +7,7 @@ import io.restassured.response.Response;
 
 public class RestUtils {
 
-    public static  Response performPost(String endPoint, String requestPayload , Map<String,String> headers){
+    public static  Response performPost(String endPoint, Object requestPayload , Map<String,String> headers){
         return RestAssured.given().log().all()
                 .baseUri(endPoint)
                 .contentType(ContentType.JSON)
