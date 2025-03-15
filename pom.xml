@@ -1,0 +1,99 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.sadhu</groupId>
+    <artifactId>CucumberWithRestAssuredFramework</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>CucumberWithRestAssuredFramework</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <cucumber.version>7.21.1</cucumber.version>
+        <cucumber.junit>7.21.1</cucumber.junit>
+        <cucmber.picocontainer>7.21.1</cucmber.picocontainer>
+        <maven.compile.source>1.8</maven.compile.source>
+        <maven.compile.target>1.8</maven.compile.target>
+        <restassured.version>5.5.1</restassured.version>
+        <gson.version>2.12.1</gson.version>
+        <jackson-databind.version>2.18.3</jackson-databind.version>
+        <testNG.version>7.11.0</testNG.version>
+        <extentReport.version>5.1.2</extentReport.version>
+        <javafaker.version>1.0.2</javafaker.version>
+        <apchecommonlang.version>3.17.0</apchecommonlang.version>
+        <lambok.version>1.18.36</lambok.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumber.junit}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>${cucmber.picocontainer}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${restassured.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testNG.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>${extentReport.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${javafaker.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${apchecommonlang.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lambok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+    </dependencies>
+</project>
