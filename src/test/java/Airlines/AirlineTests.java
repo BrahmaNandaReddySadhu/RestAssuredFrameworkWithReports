@@ -2,14 +2,14 @@ package Airlines;
 
 import io.restassured.response.Response;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import restUtils.RestUtils;
-import utils.JsonUtils;
+import reportings.SetUp;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
+@Listeners(SetUp.class)
 public class AirlineTests extends  AirlineAPI{
 
     @Test
