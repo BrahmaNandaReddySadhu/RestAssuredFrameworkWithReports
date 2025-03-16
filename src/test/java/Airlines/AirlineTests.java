@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AirlineTests {
+public class AirlineTests extends  AirlineAPI{
 
     @Test
     public void createAirline() throws IOException {
@@ -40,11 +40,13 @@ public class AirlineTests {
 
 
 
-        String env =System.getProperty("env")== null ? "dev": System.getProperty("env");
-        Map<String,String> data = JsonUtils.getJsonDataAsMap("airlines/"+env+"/airlinesApiData.json");
-        String baseUri=data.get("createAirLineEndpoint");
+//        String env =System.getProperty("env")== null ? "dev": System.getProperty("env");
+//        Map<String,Object> data = JsonUtils.getJsonDataAsMap("airlines/"+env+"/airlinesApiData.json");
+//        String baseUri=data.get("createAirLineEndpoint").toString();
         Map<String,Object>  payload=Payloads.getCreateAirlinePayloadAsMap("Jim","Brown",111,true,"2018-01-01","2019-01-01","Breakfast");
-        Response response =RestUtils.performPost(baseUri,payload,new HashMap<>());
+//        Response response =RestUtils.performPost(baseUri,payload,new HashMap<>());
+
+        Response  response=createAirline(payload);
         Assert.assertEquals(response.statusCode(),200);
 
 
