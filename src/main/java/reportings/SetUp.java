@@ -1,12 +1,14 @@
 package reportings;
 
 import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
+import org.testng.ITestResult;
 
 public class SetUp implements ITestListener {
-
     private static ExtentReports extentReports;
+    public static ThreadLocal<ExtentTest> extentTest=new ThreadLocal<ExtentTest>();
 
     public void onStart(ITestContext context) {
         String fileName =ExtentReportManager.getReportNameWithTimeStamp();
@@ -21,5 +23,9 @@ public class SetUp implements ITestListener {
         }
     }
 
+    public void onTestStart(ITestResult result) {
+        ExtentTest test = extentReports.createTest("Test Name " + result.getTestClass().getName() + "-"+ result.getMethod().getMethodName());
+        extentTest.set(test);
+    }
 
 }
