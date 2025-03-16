@@ -16,8 +16,6 @@ public class AirlineTests extends  AirlineAPI{
     public void createAirline() throws IOException {
 
 
-
-
        // String baseUri= "https://restful-booker.herokuapp.com/booking";
 
 //        String payload = "{\n" +
@@ -39,7 +37,6 @@ public class AirlineTests extends  AirlineAPI{
   //      String payload=Payloads.getCreateAirlinePayload("Jim","Brown",111,true,bookingDates,"Breakfast");
 
 
-
 //        String env =System.getProperty("env")== null ? "dev": System.getProperty("env");
 //        Map<String,Object> data = JsonUtils.getJsonDataAsMap("airlines/"+env+"/airlinesApiData.json");
 //        String baseUri=data.get("createAirLineEndpoint").toString();
@@ -53,3 +50,4 @@ public class AirlineTests extends  AirlineAPI{
     }
 
 }
+
