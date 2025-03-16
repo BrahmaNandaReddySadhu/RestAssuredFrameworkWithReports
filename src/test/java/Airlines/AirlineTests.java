@@ -26,9 +26,9 @@ public class AirlineTests extends  AirlineAPI{
 //                "    \"bookingdates\": {\n" +
 //                "        \"checkin\": \"2018-01-01\",\n" +
 //                "        \"checkout\": \"2019-01-01\"\n" +
-//                "    },\n" +
+//                "    },\n" o+
 //                "    \"additionalneeds\": \"Breakfast\"\n" +
-//                "}";
+//                "}";--
 
 //        Map<String,String> bookingDates= new HashMap<>();
 //        bookingDates.put("checkin","2018-01-01");
@@ -41,8 +41,7 @@ public class AirlineTests extends  AirlineAPI{
 //        Map<String,Object> data = JsonUtils.getJsonDataAsMap("airlines/"+env+"/airlinesApiData.json");
 //        String baseUri=data.get("createAirLineEndpoint").toString();
         Map<String,Object>  payload=Payloads.getCreateAirlinePayloadAsMap("Jim","Brown",111,true,"2018-01-01","2019-01-01","Breakfast");
-//        Response response =RestUtils.performPost(baseUri,payload,new HashMap<>());
-
+//       Response response =RestUtils.performPost(baseUri,payload,new HashMap<>());
         Response  response=createAirline(payload);
         Assert.assertEquals(response.statusCode(),200);
 
