@@ -40,8 +40,8 @@ public class AirlineTests {
 
 
 
-        String env =System.getProperty("env")== null ? "qa": System.getProperty("env");
-        Map<String,String> data = JsonUtils.getJsonDataAsMap("airlines."+env+"/airlinesApiData.json");
+        String env =System.getProperty("env")== null ? "dev": System.getProperty("env");
+        Map<String,String> data = JsonUtils.getJsonDataAsMap("airlines/"+env+"/airlinesApiData.json");
         String baseUri=data.get("createAirLineEndpoint");
         Map<String,Object>  payload=Payloads.getCreateAirlinePayloadAsMap("Jim","Brown",111,true,"2018-01-01","2019-01-01","Breakfast");
         Response response =RestUtils.performPost(baseUri,payload,new HashMap<>());
