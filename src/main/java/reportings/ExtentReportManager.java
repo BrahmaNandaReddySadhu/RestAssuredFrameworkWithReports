@@ -1,6 +1,7 @@
 package reportings;
 
 import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
@@ -11,7 +12,8 @@ import java.time.format.DateTimeFormatter;
 
 public class ExtentReportManager {
 
-    public static ExtentReports extentReports;
+    private  static ExtentReports extentReports;
+    private static ThreadLocal<ExtentTest> extentTest=new ThreadLocal<>();
 
     public static ExtentReports createInstance(String fileName, String reportName, String documentTitle){
         ExtentSparkReporter extentSparkReporter = new ExtentSparkReporter(fileName);
@@ -20,9 +22,35 @@ public class ExtentReportManager {
         extentSparkReporter.config().setTheme(Theme.DARK);
         extentSparkReporter.config().setEncoding("UTF-8");
 
-        extentReports = new ExtentReports();
+        extentReports =  new ExtentReports();
         extentReports.attachReporter(extentSparkReporter);
         return extentReports;
+    }
+
+    public static synchronized ExtentReports getInstance(){
+        if( extentReports == null){
+            initializeReport();
+        }
+        return extentReports;
+    }
+
+    private static void initializeReport(){
+        String fileName =getReportNameWithTimeStamp();
+        String fullReportPath = System.getProperty("user.dir")+"/target/extentReports/" + fileName;
+        createInstance(fullReportPath,"Test API Automation Report","Test Execution details");
+    }
+
+    public static void startTest(String testName) {
+        ExtentTest test = getInstance().createTest(testName);
+        extentTest.set(test);
+    }
+
+    private static ExtentTest getTest(){
+        ExtentTest test = extentTest.get();
+        if(test== null){
+            throw  new IllegalStateException("ExtentTest is not initialized. Ensure onTestStart() is setting the test instance");
+        }
+        return test;
     }
 
     public static String getReportNameWithTimeStamp(){
@@ -34,19 +62,19 @@ public class ExtentReportManager {
     }
 
     public static void logPassDetails(String log){
-        SetUp.extentTest.get().pass(MarkupHelper.createLabel(log, ExtentColor.GREEN));
+        getTest().pass(MarkupHelper.createLabel(log, ExtentColor.GREEN));
     }
 
     public static void logFailureDetails(String log){
-        SetUp.extentTest.get().fail(MarkupHelper.createLabel(log, ExtentColor.RED));
+        getTest().fail(MarkupHelper.createLabel(log, ExtentColor.RED));
     }
 
     public static void logInfoDetails(String log){
-        SetUp.extentTest.get().info(MarkupHelper.createLabel(log, ExtentColor.GREY));
+        getTest().info(MarkupHelper.createLabel(log, ExtentColor.GREY));
     }
 
     public static void logWarningDetails(String log){
-        SetUp.extentTest.get().warning(MarkupHelper.createLabel(log, ExtentColor.YELLOW));
+        getTest().warning(MarkupHelper.createLabel(log, ExtentColor.YELLOW));
     }
 
 
